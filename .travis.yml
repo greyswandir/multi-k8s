@@ -14,3 +14,10 @@ after_success:
   - docker build -t olegvitko/complex-nginx ./nginx
   - docker build -t olegvitko/complex-server ./server
   - docker build -t olegvitko/complex-worker ./worker
+  # Log in to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push olegvitko/complex-client
+  - docker push olegvitko/complex-nginx
+  - docker push olegvitko/complex-server
+  - docker push olegvitko/complex-worker
