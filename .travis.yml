@@ -1,0 +1,16 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t olegvitko/complex-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true olegvitko/complex-test npm run test
+
+after_success:
+  - docker build -t olegvitko/complex-client ./client
+  - docker build -t olegvitko/complex-nginx ./nginx
+  - docker build -t olegvitko/complex-server ./server
+  - docker build -t olegvitko/complex-worker ./worker
