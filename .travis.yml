@@ -21,3 +21,13 @@ after_success:
   - docker push olegvitko/complex-nginx
   - docker push olegvitko/complex-server
   - docker push olegvitko/complex-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-central-1"
+  app: "multi-docker"
+  env: "Multi-docker-env"
+  bucket_name: "elasticbeanstalk-eu-central-1-061996120074"
+  bucket_path: "docker-multi"
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
