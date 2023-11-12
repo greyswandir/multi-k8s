@@ -1,17 +1,17 @@
-docker build -t olegvitko/multi-client:latest -t olegvitko/multi-client:$SHA -f ./client/Dockerfile ./client
-docker build -t olegvitko/multi-server:latest -t olegvitko/multi-server:$SHA -f ./server/Dockerfile ./server
-docker build -t olegvitko/multi-worker:latest -t olegvitko/multi-worker:$SHA -f ./worker/Dockerfile ./worker
+docker build -t olegvitko/complex-client:latest -t olegvitko/complex-client:$SHA -f ./client/Dockerfile ./client
+docker build -t olegvitko/complex-server:latest -t olegvitko/complex-server:$SHA -f ./server/Dockerfile ./server
+docker build -t olegvitko/complex-worker:latest -t olegvitko/complex-worker:$SHA -f ./worker/Dockerfile ./worker
 
-docker push olegvitko/multi-client:latest
-docker push olegvitko/multi-server:latest
-docker push olegvitko/multi-worker:latest
+docker push olegvitko/complex-client:latest
+docker push olegvitko/complex-server:latest
+docker push olegvitko/complex-worker:latest
 
-docker push olegvitko/multi-client:$SHA
-docker push olegvitko/multi-server:$SHA
-docker push olegvitko/multi-worker:$SHA
+docker push olegvitko/complex-client:$SHA
+docker push olegvitko/complex-server:$SHA
+docker push olegvitko/complex-worker:$SHA
 
 kubectl apply -f k8s
 
-kubectl set image deployment/client-deployment client=olegvitko/multi-client:$SHA
-kubectl set image deployment/server-deployment server=olegvitko/multi-server:$SHA
-kubectl set image deployment/worker-deployment worker=olegvitko/multi-worker:$SHA
+kubectl set image deployment/client-deployment client=olegvitko/complex-client:$SHA
+kubectl set image deployment/server-deployment server=olegvitko/complex-server:$SHA
+kubectl set image deployment/worker-deployment worker=olegvitko/complex-worker:$SHA
