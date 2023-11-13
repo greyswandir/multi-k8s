@@ -1,7 +1,6 @@
-language: python
-python:
-  - "3.9"
+language: generic
 sudo: required
+dist: focal
 services:
   - docker
 
@@ -19,7 +18,7 @@ before_install:
   - gcloud config set project multi-k8s-404508
   - gcloud config set compute/zone europe-north1-a
   - gcloud container clusters get-credentials multi-cluster
-  - echo "$DOCKER_PASSWORD" docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t olegvitko/react-test -f ./client/Dockerfile.dev ./client
 
 script:
