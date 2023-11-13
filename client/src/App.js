@@ -16,7 +16,7 @@ function App() {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        Learn React NOW!
+                        Learn React NOW with Google Kubernetes Engine aka GKE!
                     </a>
                     <Link to="/">Home</Link>
                     <Link to="/otherpage">Other Page</Link>
